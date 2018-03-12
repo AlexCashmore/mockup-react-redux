@@ -1,12 +1,12 @@
 import React from 'react';
-import { Card, Col, Icon, Row } from 'react-materialize';
+import {Button, Card, Col, Icon, Row} from 'react-materialize';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => (
     <div>
       <Row>
         <Col l={4} m={6} s={8} className="offset-s2 offset-l2">
-          <Link to="/medication" >
+          <Link to="/option1" >
             <Card className="hoverable center-align z-depth-3" style={{ color: '#0e7f8f' }}>
               <h5>
                 Option 1
@@ -15,7 +15,7 @@ const HomePage = () => (
           </Link>
         </Col>
         <Col l={4} m={6} s={8} className="offset-s2">
-          <Link to="/medications" >
+          <Link to="/option2" >
             <Card className="hoverable center-align z-depth-3" style={{ color: '#0e7f8f' }}>
               <h5>
                 Option 2
@@ -24,7 +24,7 @@ const HomePage = () => (
           </Link>
         </Col>
         <Col l={4} m={6} s={8} className="offset-s2 offset-l2">
-          <Link to="/prescriptions/" >
+          <Link to="/option3" >
             <Card className="hoverable center-align z-depth-3" style={{ color: '#0e7f8f' }}>
               <h5>
                 Option 3
@@ -33,7 +33,7 @@ const HomePage = () => (
           </Link>
         </Col>
         <Col l={4} m={6} s={8} className="offset-s2">
-          <Link to="/orders/pending" >
+          <Link to="/option4" >
             <Card className="hoverable center-align z-depth-3" style={{ color: '#0e7f8f' }}>
               <h5>
                 Option 4

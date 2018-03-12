@@ -25,6 +25,9 @@ export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PageView)
 */
 export default function App() {
   return (
+      <div>
+        <div style={{height:70,width:'100%',backgroundColor:'#5ab0dc'}}><h4>mock react app (Alex Cashmore)</h4></div>
         <Pages />
+      </div>
   );
 }
