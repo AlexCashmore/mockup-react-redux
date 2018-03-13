@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {Card, Table} from "react-materialize";
+import {Link} from "react-router-dom";
 
 class ListPage extends Component {
   constructor(props){
@@ -11,7 +12,7 @@ class ListPage extends Component {
     return items.map(item =>
         (<tr key={item.id}>
           <td>
-            {item.title}
+            <Link to={`ListExample/${item.id}`}>{item.title}</Link>
           </td>
           <td>
             {item.id}
