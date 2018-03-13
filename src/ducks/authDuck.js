@@ -1,54 +1,56 @@
-
-export const REQUEST_AUTH_STATE = 'zoom/auth/REQUEST_AUTH_STATE';
-export const RECEIVE_AUTH_STATE_AUTHENTICATED = 'zoom/auth/RECEIVE_AUTH_STATE_AUTHENTICATED';
-export const RECEIVE_AUTH_STATE_UNAUTHENTICATED = 'zoom/auth/RECEIVE_AUTH_STATE_UNAUTHENTICATED';
-export const AUTH_STATE_LOGOUT = 'zoom/auth/AUTH_STATE_LOGOUT';
-export const BOOT_TO_LOGIN = 'zoom/auth/BOOT_TO_LOGIN';
+import request from 'superagent';
+export const REQUEST_ACTION = 'zoom/auth/REQUEST_ACTION';
+export const RECEIVE_ACTION = 'zoom/auth/RECEIVE_ACTION';
 
 export default (
-    state = { isChecking: false, isSilent: true, isAuthenticated: false, bootToLogin: false },
+    state = { list: [],searching:false},
     action,
 ) => {
   switch (action.type) {
-    case REQUEST_AUTH_STATE:
+    case RECEIVE_ACTION:
+      console.log(action.data);
       return Object.assign({},
           state,
-          { isChecking: true, isSilent: action.silent, bootToLogin: false });
-    case RECEIVE_AUTH_STATE_AUTHENTICATED:
+          { list:action.data,searching:false });
+      case REQUEST_ACTION:
+      console.log('request');
       return Object.assign({},
           state,
-          { isChecking: false, isAuthenticated: true });
-    case RECEIVE_AUTH_STATE_UNAUTHENTICATED:
-      return Object.assign({},
-          state,
-          { isChecking: false, isAuthenticated: false });
-    case BOOT_TO_LOGIN:
-      return { isChecking: false, isSilent: true, isAuthenticated: false, bootToLogin: true };
+          {searching:true });
     default:
       return state;
   }
 };
 
+function receiveAction(data) {
+  return {
+    type: RECEIVE_ACTION,
+    data,
+  };
+}
+function requestAction() {
+  return {
+    type: REQUEST_ACTION,
+  };
+}
 
-function requestAuthState(silent) {
-  return {
-    silent,
-    type: REQUEST_AUTH_STATE,
-  };
-}
-function receiveAuthStateAuthenticated() {
-  return {
-    type: RECEIVE_AUTH_STATE_AUTHENTICATED,
-  };
-}
-function receiveAuthStateUnauthenticated() {
-  return {
-    type: RECEIVE_AUTH_STATE_UNAUTHENTICATED,
-  };
-}
-function authStateLogout() {
-  return {
-    type: AUTH_STATE_LOGOUT,
-  };
+export function getListData(){
+  return(dispatch)=> {
+    console.log('getting list data');
+    dispatch(requestAction());
+    try {
+     return request
+          .get('https://jsonplaceholder.typicode.com/posts')
+          .then((err, res) => {
+              let listData = err.body;
+             return dispatch(receiveAction(listData))
+
+          });
+    }
+
+    catch (e) {
+      console.log(e);
+    }
+  }
 }
 

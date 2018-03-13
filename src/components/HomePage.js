@@ -6,10 +6,10 @@ const HomePage = () => (
     <div>
       <Row>
         <Col l={4} m={6} s={8} className="offset-s2 offset-l2">
-          <Link to="/option1" >
+          <Link to="/ListExample" >
             <Card className="hoverable center-align z-depth-3" style={{ color: '#0e7f8f' }}>
               <h5>
-                Option 1
+                List Example
               </h5>
             </Card>
           </Link>
@@ -18,7 +18,7 @@ const HomePage = () => (
           <Link to="/option2" >
             <Card className="hoverable center-align z-depth-3" style={{ color: '#0e7f8f' }}>
               <h5>
-                Option 2
+                Form Example
               </h5>
             </Card>
           </Link>
@@ -27,7 +27,7 @@ const HomePage = () => (
           <Link to="/option3" >
             <Card className="hoverable center-align z-depth-3" style={{ color: '#0e7f8f' }}>
               <h5>
-                Option 3
+                Authentication Example
               </h5>
             </Card>
           </Link>
@@ -36,7 +36,7 @@ const HomePage = () => (
           <Link to="/option4" >
             <Card className="hoverable center-align z-depth-3" style={{ color: '#0e7f8f' }}>
               <h5>
-                Option 4
+                Example 4
               </h5>
             </Card>
           </Link>
